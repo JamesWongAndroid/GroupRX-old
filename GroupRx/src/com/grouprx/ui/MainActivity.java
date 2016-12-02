@@ -8,7 +8,9 @@ import net.simonvt.menudrawer.Position;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,12 +27,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 import com.grouprx.adapters.MenuListAdapter;
 import com.grouprx.sync.AppSettings;
 import com.grouprx.sync.URLDownloadFile;
 import com.grouprx.util.MyActivity;
 import com.grouprx.util.MyFragment;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 
 public class MainActivity extends MyActivity {
 
@@ -45,6 +49,8 @@ public class MainActivity extends MyActivity {
 	private ImageButton actionbar_back;
 	private ImageButton actionbar_menu;
 	private ImageView imageMenu;
+	private boolean isNewUser;
+	private SharedPreferences prefs;
 
 	private static MainActivity instance;
 
@@ -55,6 +61,10 @@ public class MainActivity extends MyActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		instance = this;
+		
+		prefs = getSharedPreferences(getResources().getString(R.string.app_name), MODE_PRIVATE);
+		isNewUser = prefs.getBoolean("isNewUser", true);
+		
 		try {
 			mActionBar = getActionBar();
 			mActionBar.setDisplayShowHomeEnabled(false);
@@ -102,6 +112,7 @@ public class MainActivity extends MyActivity {
 
 			mActionBar.setCustomView(mCustomView);
 			mActionBar.setDisplayShowCustomEnabled(true);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ExceptionException = " + e);
@@ -191,6 +202,14 @@ public class MainActivity extends MyActivity {
 		}
 		hideBackButton();
 		refresh();
+		
+		if (isNewUser) {
+			new howToUseAppTask().execute();
+			
+			SharedPreferences.Editor editor = getSharedPreferences(getResources().getString(R.string.app_name), MODE_PRIVATE).edit();
+			editor.putBoolean("isNewUser", false);
+			editor.commit();
+		}
 		
 	}
 

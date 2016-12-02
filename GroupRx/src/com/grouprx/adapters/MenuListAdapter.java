@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 
 public class MenuListAdapter extends BaseAdapter {
 

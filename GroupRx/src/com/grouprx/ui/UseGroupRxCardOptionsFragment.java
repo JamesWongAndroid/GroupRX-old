@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 import com.grouprx.sync.URLDownloadFile;
 import com.grouprx.util.MyFragment;
 

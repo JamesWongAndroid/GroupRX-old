@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 import com.grouprx.util.MyFragment;
 
 public class FaqsItemFragment extends MyFragment {

@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 import com.grouprx.sync.AppSettings;
 import com.grouprx.sync.URLDownloadFile;
 

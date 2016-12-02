@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.grouprx.R;
+import com.nationaldrugcard.grouprx.R;
 import com.grouprx.adapters.LinksListAdapter;
 import com.grouprx.objects.objLink;
 import com.grouprx.sync.AppSettings;
